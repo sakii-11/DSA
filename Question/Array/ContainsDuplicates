@@ -1,0 +1,8 @@
+sort the arr , identify any repeating value 
+O(nlogn) 
+
+sort(nums.begin(), nums.end());
+for(int i=1; i<nums.size(); i++){
+if(nums[i]==nums[i-1]) return true;
+}
+return false;

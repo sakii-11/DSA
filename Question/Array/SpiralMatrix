@@ -1,0 +1,60 @@
+in a while loop , 
+travel l to right (top++), 
+top to bottom(right--), 
+if(top<=bottom)
+right to left(bottom--), 
+if(left<=right)
+bottom to top(left++)
+
+O(n)
+
+class Solution
+{
+public:
+  vector<int> spiralOrder(vector<vector<int>> &mat)
+  {
+    int n = mat.size();
+    int m = mat[0].size();
+
+    vector<int> ans;
+
+    int top = 0, bottom = n - 1, left = 0, right = m - 1;
+    while (top <= bottom && left <= right)
+    {
+      // loop to travel left to right
+      for (int i = left; i <= right; i++)
+      {
+        ans.push_back(mat[top][i]);
+      }
+      top++;
+
+      // loop to travel top to bottom
+      for (int i = top; i <= bottom; i++)
+      {
+        ans.push_back(mat[i][right]);
+      }
+      right--;
+
+      // loop to travel right to left
+      if (top <= bottom)
+      {
+        for (int i = right; i >= left; i--)
+        {
+          ans.push_back(mat[bottom][i]);
+        }
+        bottom--;
+      }
+
+      // loop to travel bottom to top
+      if (left <= right)
+      {
+        for (int i = bottom; i >= top; i--)
+        {
+          ans.push_back(mat[i][left]);
+        }
+        left++;
+      }
+    }
+    return ans;
+  }
+};

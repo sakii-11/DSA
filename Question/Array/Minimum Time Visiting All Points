@@ -1,0 +1,21 @@
+the max distance between two points is the max diff between either one of its axis
+
+O(r) 
+
+```cpp
+class Solution {
+public:
+    int minTimeToVisitAllPoints(vector<vector<int>>& pt) {
+        int ans=0;
+        int r= pt.size(), v= 2;
+        for(int i=1; i<r; i++){
+            int x = pt[i][0];
+            int y = pt[i][1];
+            int prev_x= pt[i-1][0];
+            int prev_y = pt[i-1][1];
+            ans += max(abs(prev_x-x), abs(prev_y-y));
+        }
+        return ans;
+    }
+};
+```

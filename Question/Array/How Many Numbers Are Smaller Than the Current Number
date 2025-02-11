@@ -1,0 +1,22 @@
+sort the arr , store the first ind of the ele along with the element in a map , for each ele replace it with the val in the map 
+
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int n= nums.size();
+        vector<int> temp = nums;
+        sort(temp.begin(), temp.end());
+        unordered_map<int,int> m;
+        for(int i=0; i<n; i++){
+            if(m.find(temp[i])== m.end()){
+                m[temp[i]]= i;
+            }
+        }
+
+        for(int i=0; i<n; i++){
+            nums[i]= m[nums[i]];
+        }
+        return nums;
+
+    }
+};
