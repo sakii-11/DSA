@@ -12,7 +12,7 @@ DELETE B ->DROP DATABASE db_name
 CREATE TABLE -> CREATE TABLE person ( id BIGSERIAL NOT NULL PRIMARY KEY, fist_name VARCHAR(50) NOT NULL, last_name VARCHAR(50) NOT NULL, gender VARCHAR(5) NOT NULL, date_of_birth DATE NOT NULL);  
 //here BIGSERIAL Datatype is auto increment type .   
 
-View a table - \d table_name  
+Overview of a table - \d table_name  
 
 Add a new column to the tale ->  ALTER TABLE table_name ADD COLUMN column_name data_type [constraints];  
 Example -> ALTER TABLE person ADD COLUMN email VARCHAR(150) NOT NULL;  
@@ -59,5 +59,49 @@ SELECT * FROM person WHERE email LIKE '________@%';
 //ILIKE keyword igonres the case unlike LIKE Keyword     
 ILIKE -> SELECT * FROM person WHERE country_of_birth ILIKE 'j%';   
 
+
+# Aggregate Function 
+COUNT  
 GROUP BY -> SELECT country_of_birth , COUNT(*) FROM person GROUP BY country_of_birth;    
+
+GROUP BY HAVING -> HaVING KEYWORDS ALLOWS TO EXECUTE AN EXTRA FILTERING AFTER GROUP BY , HAVING KEYWORD SHOULD BE RIGHT AFTER GROUP BY  
+ex-> SELECT country_of_birth , COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*)=5;
+MAX -> SELECT MAX(price) FROM car;  
+MIN -> SELECT MIN(price) FROM car;  
+AVG -> SELECT AVG(REPLACE(price, '$', '')::NUMERIC) FROM car; //since price is VARCHAR with $  
+SUM ->  SELECT SUM(REPLACE(price,'$',''):: NUMERIC) FROM car;
+
+ROUND-> SELECT ROUND(REPLACE(price,'$',''):: NUMERIC, 1) FROM car;  
+ALIAS -> AS-> SELECT ROUND(REPLACE(price,'$',''):: NUMERIC, 1) AS rounded_off_price FROM car;  
+
+The COALESCE function in SQL returns the first non-null value from a list of expressions.   
+SELECT COALESCE(email, 'Email Not found') FROM person ; 
+
+The NULLIF function in SQL returns NULL if two given expressions are equal; otherwise, it returns the first expression.   
+
+SELECT NULLIF(10, 10);  -- Returns NULL  
+SELECT NULLIF(10, 20);  -- Returns 10  
+
+
+Using NULLIF to handle div by 0 -> SELECT COALESCE(10/NULLIF(0,0), 0);  
+
+NOW() -> DATE + TIME + TIMEZONE  
+NOW()::DATE -> DATE    
+NOW()::TIME -> TIME  
+SELECT EXTRACT(YEAR FROM NOW());      
+
+INTERVAL -> SELECT NOW() + INTERVAL '10 MONTHS';  
+AGE -> SELECT first_name, date_of_birth, EXTRACT(YEAR FROM AGE(NOW(), date_of_birth)) AS age FROM person;  
+
+primary key uniquely identify a record in a table -> can be made of a single or multiple cols   
+
+
+
+
+
+
+
+
+
+
 
