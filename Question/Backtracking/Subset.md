@@ -8,7 +8,6 @@ for every element in nums ,
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
-       int n= nums.size();
        vector<vector<int>> powerset = {{}};
        for(int num : nums){
         int n= powerset.size();
