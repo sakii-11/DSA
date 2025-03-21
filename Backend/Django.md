@@ -1,21 +1,22 @@
 https://www.geeksforgeeks.org/django-interview-questions/
 https://codersdaily.in/courses/django-rest-framework-tutorial/django-rest-framework-interview-questions
+https://github.com/Devinterview-io/django-interview-questions
+https://github.com/Ujjawal-Anand/django-interview
 
+## Creating new project 
+```py django-admin startproject projectname   ``
 
-# Creating new project 
-```py django-admin startproject projectname   ```
+## Creating new app
+```py python manage.py startapp appname  ``
 
-# Creating new app
-```py python manage.py startapp appname  ```
+## Starting a developement server 
+```py python manage.py runserver  ``
 
-# Starting a developement server 
-```py python manage.py runserver  ```
+## Creating new vir-env
+```py python -m venv env(name)  ``
 
-# Creating new vir-env
-```py python -m venv env(name)  ```
-
-# To run env (name of vir-env)
-```py env\Scripts\Activate ```
+## To run env (name of vir-env)
+```py env\Scripts\Activate ``
 
 
 python manage.py makemigrations
@@ -25,12 +26,12 @@ The makemigration command scans the model in your application and generates a ne
 Running migrate command helps us to make these modifications to our database. The migrate command runs the SQL instructions (produced by makemigrations) and applies the database changes. After running this command, tables will be created.
 
 
-# To include templates
+## Include templates
 ```py {% extends 'template_name.html' %} ```
 
 jango templates not only allow us to pass variables from view to template, but they also provide some programming capabilities like loops, comments, and extensions.  
 
-# To connect to postgre database
+## Connect to postgres database
 Include this in settings.py , by default it is connected to a sqlite db.
 
 ```py
@@ -44,13 +45,15 @@ DATABASES = {
        'PORT': '<database_port>',
    }
 }
-```
+``
 and then run the migrations cmds.  
 
 
 
 
-# Throttling 
+
+
+## Throttling 
 restricts the rate at which clients can make requests to prevent abuse or overuse of the API.  
 UserRateThrottle: Limits requests per user.  
 AnonRateThrottle: Limits requests per anonymous (unauthenticated) user.  
@@ -60,6 +63,6 @@ from rest_framework.throttling import UserRateThrottle
 
 class MyAPIView(APIView):
     throttle_classes = [UserRateThrottle]
-```
+``
 
 
